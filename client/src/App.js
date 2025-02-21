@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.scss';
+import { Card } from '@mui/material';
+import TabsComponent from './components/tabs/TabsComponent';
+import TasksList from './components/tasks/TasksList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-card-wrap">
+      <Card style={{display: 'flex', flexDirection: 'column'}}>
+        <Card variant={'outlined'} style={{ margin: '2rem', padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: '1'}}>
+          <TabsComponent />
+          <TasksList />
+        </Card>
+      </Card>
     </div>
   );
 }
