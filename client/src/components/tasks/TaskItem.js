@@ -13,6 +13,7 @@ import SubtaskItem from './SubtaskItem';
 
 function TaskItem({ id, text, ifExtendable }) {
   const [openSubtasks, setOpenSubtasks] = useState(false);
+  const [ifDone, setIfDone] = useState(false)
 
   const onExtendHandler = () => {
     setOpenSubtasks(!openSubtasks);

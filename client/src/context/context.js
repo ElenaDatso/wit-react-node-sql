@@ -1,4 +1,5 @@
-import { useState, createContext } from 'react';
+import { Tabs } from '@mui/material';
+import { useState, createContext, useContext } from 'react';
 
 const TabsContext = createContext();
 
@@ -17,4 +18,7 @@ const TabsContextProvider = ({children}) => {
   return <TabsContext.Provider value={tabsController}>{children}</TabsContext.Provider>;
 };
 
-export { TabsContext, TabsContextProvider };
+const useTabsContext = () => {
+  return useContext(TabsContext);
+}
+export { useTabsContext, TabsContextProvider };

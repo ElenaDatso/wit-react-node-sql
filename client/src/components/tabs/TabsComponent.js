@@ -1,11 +1,11 @@
-import React, {useState, useContext} from 'react'
+import React from 'react'
 import { Tabs } from '@mui/material';
 import TabComponent from './TabComponent';
 import { tabsList } from './TabsList';
-import { TabsContext } from '../../context/context';
+import { useTabsContext } from '../../context/context';
 
 function TabsComponent() {
-  const { activeTab, changeTabHandler } = useContext(TabsContext);
+  const { activeTab, changeTabHandler } = useTabsContext();
   const onClickHandler = (i) => {
     changeTabHandler(i);
   }

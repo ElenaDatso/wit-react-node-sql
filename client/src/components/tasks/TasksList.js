@@ -1,12 +1,11 @@
 import React, {useContext} from 'react'
 import { List } from '@mui/material';
 import TaskItem from './TaskItem';
-import { tasksData } from './tasksData';
-import { TabsContext } from '../../context/context';
+import { useTabsContext } from '../../context/context';
 import { filter } from './tasksFilter';
 
 function TasksList() {
-  const {activeTab} = useContext(TabsContext);
+  const {activeTab} = useTabsContext();
 
   return (
     <List>
