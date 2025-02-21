@@ -1,7 +1,7 @@
 export const tabsList = [
-  'Prioritized Tasks',
-  'Tasks to do',
-  'Fulfilled tasks',
-  'All active',
-  'Archive',
+  { tabName: 'Priority' },
+  { tabName: 'Tasks to do' },
+  { tabName: 'Done' },
+  { tabName: 'All' },
+  { tabName: 'Archive' },
 ];
