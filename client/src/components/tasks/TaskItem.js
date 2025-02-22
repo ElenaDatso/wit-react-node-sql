@@ -10,19 +10,25 @@ import {
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import SubtaskItem from './SubtaskItem';
+import { useTasksContext } from '../../context/tasksContext';
 
-function TaskItem({ id, text, ifExtendable }) {
+function TaskItem({ task, ifExtendable }) {
+  const { tasksList, onTasksChangeHandler } = useTasksContext();
+
   const [openSubtasks, setOpenSubtasks] = useState(false);
-  const [ifDone, setIfDone] = useState(false)
 
   const onExtendHandler = () => {
     setOpenSubtasks(!openSubtasks);
   };
+  const onCheckMarkHandler = () => {
+    task.fulfilled = !task.fulfilled;
+    onTasksChangeHandler(task);
+  }
   return (
     <>
-      <ListItem key={id}>
-        <Checkbox />
-        <ListItemText primary={text} />
+      <ListItem key={task.id}>
+        <Checkbox checked={task.fulfilled} onClick={onCheckMarkHandler} />
+        <ListItemText primary={task.taskName} />
         {ifExtendable && (
           <ListItemButton style={{ flexGrow: 0 }} onClick={onExtendHandler}>
             {openSubtasks ? <ExpandLess /> : <ExpandMore />}
@@ -32,8 +38,14 @@ function TaskItem({ id, text, ifExtendable }) {
       <Collapse in={openSubtasks} timeout="auto" unmountOnExit>
         <List sx={{ pl: 4 }}>
           {ifExtendable &&
-            ifExtendable.map((subtask, index) => (
-              <SubtaskItem subtask={subtask} index={index} ifOpenSubtask ={openSubtasks} />
+            tasksList[task.id].subtasks.map((subtask, index) => (
+              <SubtaskItem
+                key={index}
+                subtask={subtask}
+                index={index}
+                ifOpenSubtask={openSubtasks}
+                taskId={task.id}
+              />
             ))}
         </List>
       </Collapse>

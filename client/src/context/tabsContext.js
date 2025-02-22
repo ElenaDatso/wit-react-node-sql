@@ -1,4 +1,3 @@
-import { Tabs } from '@mui/material';
 import { useState, createContext, useContext } from 'react';
 
 const TabsContext = createContext();
