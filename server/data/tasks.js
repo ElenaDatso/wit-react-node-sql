@@ -1,25 +1,51 @@
-module.exports = {
-  1: {
+module.exports = [
+  {
+    id: 0,
+    ifPrioritized: false,
     taskName: 'call Tom',
     fulfilled: false,
-    archive: false,
+    ifARchived: false,
     subtasks: false,
     dueDate: false,
   },
-  2: {
+  {
+    id: 1,
+    ifPrioritized: false,
     taskName: 'shopping list',
     fulfilled: false,
-    archive: false,
+    ifARchived: false,
     subtasks: [
       {
+        id: 101,
         subtaskName: 'bananas',
         fulfilled: false,
       },
       {
+        id: 102,
+        subtaskName: 'olives',
+        fulfilled: true,
+      },
+    ],
+    dueDate: false,
+  },
+  {
+    id: 2,
+    ifPrioritized: false,
+    taskName: 'shopping list',
+    fulfilled: false,
+    ifARchived: false,
+    subtasks: [
+      {
+        id: 201,
+        subtaskName: 'bananas',
+        fulfilled: false,
+      },
+      {
+        id: 202,
         subtaskName: 'olives',
         fulfilled: false,
       },
     ],
     dueDate: false,
   },
-};
+];

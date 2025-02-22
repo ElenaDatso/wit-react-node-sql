@@ -1,34 +1,61 @@
-import React, { useState, useContext, createContext } from 'react';
-import { tasksData } from '../components/tasks/tasksData';
+import React, { useState, useContext, createContext, useEffect } from 'react';
 
 const TasksContext = createContext();
 
 export const TasksProvider = ({ children }) => {
-  const [tasksList, setTasksList] = useState(tasksData);
+  const [tasksList, setTasksList] = useState([]);
 
-  const onTasksChangeHandler = (updatedTask) => {
-    setTasksList((prevData) => {
-      return prevData.map((task) => {
-        if (task.id === updatedTask.id) {
-          return { ...task, ...updatedTask };
-        } else {
-          return task;
+  //fetch initail tasks data
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const tasks = await fetch('http://localhost:3001/tasks');
+        setTasksList(await tasks.json());
+      } catch (e) {
+        console.error(e);
+        return [];
+      }
+    }
+    fetchData();
+  }, []);
+
+  const onTasksChangeHandler = async (updatedTask) => {
+    try {
+      const task = await fetch(
+        `http://localhost:3001/tasks/${updatedTask.id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedTask),
         }
-      });
-    });
+      );
+      const response = await task.json();
+      console.log(response);
+      setTasksList((prevData) => {
+        return prevData.map((task) => {
+          if (task.id === response.id) {
+            return { ...task, ...response };
+          } else {
+            return task;
+              }
+            });
+          });
+        } catch (e) {
+          console.error(e);
+        }
+        console.log(tasksList);
+
   };
 
   const onSubtaskChengeHandler = (taskId, updatedSubtusk) => {
-    setTasksList((prevData) => {
-      return prevData.map((task) => {
-        if (task.id === taskId) {
-          task.subtasks.map((subtask) =>
-            subtask.id === updatedSubtusk.id ? updatedSubtusk : subtask
-          );
-        }
-        return task;
-      });
-    });
+    const updatedTask = tasksList
+      .find((task) => task.id === taskId)
+      .subtasks.map((subtask) =>
+        subtask.id === updatedSubtusk.id ? updatedSubtusk : subtask
+      );
+    onTasksChangeHandler(updatedTask);
   };
 
   return (

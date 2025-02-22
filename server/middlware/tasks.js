@@ -1,17 +1,18 @@
 const express = require('express');
-const tasks = require('../data/tasks');
+let tasks = require('../data/tasks');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  const tasksList = tasks;
-  res.send(tasksList);
+  res.send(tasks);
   next();
 });
 
-router.get('/:id', (req, res, next) => {
-  const task = tasks[req.params.id]
-  res.send(task);
-  next()
+router.put('/:id', (req, res, next) => {
+  const updatedTask = req.body;
+  tasks = tasks.map((task) => task.id === req.params.id ? {...task, ...updatedTask} : task);
+  console.log(tasks.find((task) => (task.id === req.params.id)));
+  res.send(tasks.find(task => task.id = req.params.id));
+  next();
 })
 
 module.exports = router;

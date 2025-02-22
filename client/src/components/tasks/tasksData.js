@@ -23,7 +23,7 @@ export const tasksData = [
       {
         id: 102,
         subtaskName: 'olives',
-        fulfilled: true,
+        fulfilled: false,
       },
     ],
     dueDate: false,

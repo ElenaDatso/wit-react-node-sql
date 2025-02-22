@@ -10,23 +10,23 @@ function App() {
   return (
     <TabsContextProvider>
       <TasksProvider>
-        <div className="main-card-wrap">
-          <Card style={{ display: 'flex', flexDirection: 'column' }}>
-            <Card
-              variant={'outlined'}
-              style={{
-                margin: '2rem',
-                padding: '2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                flexGrow: '1',
-              }}
-            >
-              <TabsComponent />
-              <TasksList />
-            </Card>
+      <div className="main-card-wrap">
+        <Card style={{ display: 'flex', flexDirection: 'column' }}>
+          <Card
+            variant={'outlined'}
+            style={{
+              margin: '2rem',
+              padding: '2rem',
+              display: 'flex',
+              flexDirection: 'column',
+              flexGrow: '1',
+            }}
+          >
+            <TabsComponent />
+            <TasksList />
           </Card>
-        </div>
+        </Card>
+      </div>
       </TasksProvider>
     </TabsContextProvider>
   );
