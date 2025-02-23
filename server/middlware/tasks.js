@@ -9,9 +9,9 @@ router.get('/', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const updatedTask = req.body;
-  tasks = tasks.map((task) => task.id === req.params.id ? {...task, ...updatedTask} : task);
-  console.log(tasks.find((task) => (task.id === req.params.id)));
-  res.send(tasks.find(task => task.id = req.params.id));
+  console.log(updatedTask, Number(req.params.id));
+  tasks = tasks.map((task) => task.id === Number(req.params.id)? {...task, ...updatedTask } : task );
+  res.send(tasks.find((task) => task.id === Number(req.params.id)));
   next();
 })
 

@@ -45,16 +45,16 @@ export const TasksProvider = ({ children }) => {
         } catch (e) {
           console.error(e);
         }
-        console.log(tasksList);
-
   };
 
   const onSubtaskChengeHandler = (taskId, updatedSubtusk) => {
-    const updatedTask = tasksList
-      .find((task) => task.id === taskId)
-      .subtasks.map((subtask) =>
+    console.log(updatedSubtusk);
+      const updatedTask = tasksList.find((task) => task.id === taskId);
+      updatedTask.subtasks = updatedTask.subtasks.map((subtask) =>
         subtask.id === updatedSubtusk.id ? updatedSubtusk : subtask
-      );
+      );;
+
+    console.log(updatedTask)
     onTasksChangeHandler(updatedTask);
   };
 
