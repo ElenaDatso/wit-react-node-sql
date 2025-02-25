@@ -2,38 +2,6 @@
 
 This project was created with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts for Client:
-
-In the CLIENT directory, you can run:
-
-### `npm run start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-## Available Scripts for Server:
-
-node .
-
-or
-
-nodemon .
-
-The server runs at [http://localhost:3001](http://localhost:3001) 
 
 ### Overview
 The program is a full-stack web application designed to manage to-do items. It uses React for the frontend, Node.js with Express for the backend, and MongoDB Atlas as the database.
