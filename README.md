@@ -4,7 +4,7 @@ This project was created with [Create React App](https://github.com/facebook/cre
 
 
 ### Overview
-The program is a full-stack web application designed to manage to-do items. It uses React for the frontend, Node.js with Express for the backend, and MongoDB Atlas as the database.
+The program is a full-stack web application designed to manage to-do items. It uses React for the frontend, Node.js with Express for the backend, and a local database.
 
 ## Features
 
