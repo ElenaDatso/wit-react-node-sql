@@ -21,6 +21,6 @@ function TabsComponent() {
       ))}
     </Tabs>
   );
-}
+};
 
 export default TabsComponent;

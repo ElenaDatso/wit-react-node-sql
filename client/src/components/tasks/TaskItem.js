@@ -6,10 +6,11 @@ import {
   Checkbox,
   ListItemButton,
   List,
-  Collapse
+  Collapse,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import SubtaskItem from './SubtaskItem';
+import DotsMenu from '../../ui/Dots';
 import { useTasksContext } from '../../context/tasksContext';
 
 function TaskItem({ task, ifExtendable }) {
@@ -23,7 +24,7 @@ function TaskItem({ task, ifExtendable }) {
   const onCheckMarkHandler = () => {
     task.fulfilled = !task.fulfilled;
     onTasksChangeHandler(task);
-  }
+  };
   return (
     <>
       <ListItem key={task.id}>
@@ -34,19 +35,22 @@ function TaskItem({ task, ifExtendable }) {
             {openSubtasks ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
         )}
+        <DotsMenu taskId={task.id} />
       </ListItem>
       <Collapse in={openSubtasks} timeout="auto" unmountOnExit>
         <List sx={{ pl: 4 }}>
           {ifExtendable &&
-            tasksList[task.id].subtasks.map((subtask, index) => (
-              <SubtaskItem
-                key={index}
-                subtask={subtask}
-                index={index}
-                ifOpenSubtask={openSubtasks}
-                taskId={task.id}
-              />
-            ))}
+            tasksList
+              .find((t) => t.id === task.id)
+              .subtasks.map((subtask, index) => (
+                <SubtaskItem
+                  key={index}
+                  subtask={subtask}
+                  index={index}
+                  ifOpenSubtask={openSubtasks}
+                  taskId={task.id}
+                />
+              ))}
         </List>
       </Collapse>
       <Divider />
