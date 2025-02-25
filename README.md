@@ -25,11 +25,15 @@ The program is a full-stack web application designed to manage to-do items. It u
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/ElenaDatso/wit-react-node-sql.git
-   cd wit-react-node-sql
+   
 
    You will need two terminals to run client and server at one time.
    In each terminal switch to according folders:
+   First in each terminal:
+   cd wit-react-node-sql
 
+   Then change directory in each terminal. One - to client, another to server directory:
+   
    cd server
    cd client
 
